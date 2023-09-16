@@ -15,13 +15,22 @@ def calculate(num1, num2, action):
 
 if __name__ == "__main__":
     while True:
-        try:
-            num1 = float(input("Give a first number:"))
-            if isinstance(num1, float):
-                num2 = float(input("Give a second number:"))
-                break
-        except ValueError:
-            print("Invalid input. Please give a number!")
-    action = input("Give a operator (+,-,*,/)")
-    result = calculate(num1, num2, action)
-    print(f"Your result is {result}")
+        while True:
+            try:
+                num1 = float(input("Give a first number:"))
+                if isinstance(num1, float):
+                    num2 = float(input("Give a second number:"))
+                    break
+            except ValueError:
+                print("Invalid input. Please give a number!")
+        action = input("Give a operator (+,-,*,/)")
+        result = calculate(num1, num2, action)
+        if result == "Can't devide by 0!":
+            continue
+        print(f"Your result is {result}")
+        choice = input("Another calculation? (yes/no)")
+        if choice == "yes":
+            continue
+        else:
+            break
+    print("Calculate again!")
