@@ -8,9 +8,10 @@ def calculate(num1, num2, action):
         case "*":
             result = num1 * num2
         case "/":
-            if num1 == 0:
-                return "Can't devide by 0!"
-            result = num1 / num2
+            if num1 != 0:
+                result = num1 / num2
+            else:
+                return "Can't divide by 0!"
     return result
 
 if __name__ == "__main__":
