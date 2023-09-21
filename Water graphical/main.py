@@ -1,9 +1,15 @@
 from tkinter import messagebox
 import customtkinter
 import datetime
+import tkinter as tk
 
 
 class TextFileHandler:
+    """
+    This class handles files
+
+    """
+
     def __init__(self):
         self.filename = datetime.date.today().strftime("%Y-%m-%d.txt")
         self.file = None
@@ -50,30 +56,36 @@ class WaterTracker():
         self.entry = customtkinter.CTkEntry(master=self.frame, placeholder_text="Water amount", font=("Roboto", 15))
         self.entry.pack(pady=12, padx=15)
 
+        self.total_label = customtkinter.CTkLabel(master=self.frame, text="Total: 0.0", font=("Roboto", 15))
+        self.total_label.pack(pady=12, padx=15)
+
         self.addButton = customtkinter.CTkButton(master=self.frame, text="Add", command=self.add)
         self.addButton.pack(pady=12, padx=15)
-        self.addButton.pack()
-
-        self.totalButton = customtkinter.CTkButton(master=self.frame, text="Total", command=self.total)
-        self.totalButton.pack(pady=12, padx=15)
-        self.totalButton.pack()
 
         self.quitButton = customtkinter.CTkButton(master=self.frame, text="Quit", command=self.quit)
         self.quitButton.pack(pady=12, padx=15)
-        self.quitButton.pack()
+
+        self.total()
 
     def add(self):
         number = self.entry.get()
         if number.isdigit() and int(number) >= 0:
             self.text_file_handler.write(number + '\n')
-            self.text_file_handler.close()
-            self.text_file_handler.open()
+        elif number.lower() == "glass":
+            number = str(330)
+            self.text_file_handler.write(number + '\n')
+        elif number.lower() == "bottle":
+            number = str(750)
+            self.text_file_handler.write(number + '\n')
         else:
             messagebox.showerror("Invalid Input", "Please enter a valid number")
+        self.text_file_handler.close()
+        self.text_file_handler.open()
+        self.total()
 
     def total(self):
         total = self.text_file_handler.total()
-        messagebox.showinfo("Total", f"Total milliliters drank: {total} ml")
+        self.total_label.configure(text=f"Total: {total}")
 
     def quit(self):
         self.text_file_handler.close()
