@@ -85,7 +85,7 @@ class WaterTracker():
 
     def total(self):
         total = self.text_file_handler.total()
-        self.total_label.configure(text=f"Total: {total}")
+        self.total_label.configure(text=f"Total: {total} ml")
 
     def quit(self):
         self.text_file_handler.close()
