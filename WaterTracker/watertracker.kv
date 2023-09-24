@@ -1,0 +1,48 @@
+<MyRoot>
+
+    orientation: 'vertical'
+    spacing: 10
+    padding: 10
+    canvas.before:
+        Color:
+            rgba: 0.9, 0.9, 0.9, 0.3
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: "Water tracker"
+        font_size: 100
+
+    TextInput:
+        id: entry
+        hint_text: "Water amount"
+        font_size: 40
+        height: 100
+        size_hint_y: None
+        valign: 'middle'
+        size_hint_x: 0.5
+        pos_hint: {'center_x': 0.5}
+
+    Label:
+        id: total
+        text: "Total: 0.0"
+        font_size: 50
+
+    Button:
+        text: "Add"
+        on_release: root.add(root)
+        background_color: 0, 0.6, 1, 2
+        height: 30
+        size_hint: (1,1)
+        size_hint_x: 0.5
+        pos_hint: {'center_x': 0.5}
+
+    Button:
+        text: "Quit"
+        on_release: root.quit(root)
+        background_color: 0, 0.6, 1, 2
+        height: 30
+        size_hint: (1,1)
+        size_hint_x: 0.5
+        pos_hint: {'center_x': 0.5}
