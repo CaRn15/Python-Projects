@@ -1,11 +1,11 @@
 import glob
-import os
-import re
 from tkinter import messagebox
 import matplotlib.pyplot as plt
+plt.switch_backend("TkAgg")
 import customtkinter
 import datetime
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 
 class TextFileHandler:
     """
@@ -41,6 +41,7 @@ class TextFileHandler:
                     if number.isdigit():
                         total += int(number)
         return total
+
 
 class WaterTracker:
     def __init__(self):
@@ -127,16 +128,16 @@ class WaterTracker:
 
         statsText.configure(text="\n\n".join(stats))
 
-        plt.plot(dates,totals)
-        plt.xlabel("Date",fontsize=14)
-        plt.ylabel("Total ml",fontsize=14)
-        plt.title("Daily ml drank",fontsize=14)
+        plt.plot(dates, totals)
+        plt.xlabel("Date", fontsize=14)
+        plt.ylabel("Total ml", fontsize=14)
+        plt.title("Daily ml drank", fontsize=14)
         plt.xticks(rotation=90)
         plt.tight_layout()
         canvas = FigureCanvasTkAgg(plt.gcf(), master=statsWindow)
         canvas_widget = canvas.get_tk_widget()
         canvas_widget.pack()
-
+        plt.close()
         plt.show()
 
 
