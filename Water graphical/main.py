@@ -1,10 +1,10 @@
 import os
 import re
 from tkinter import messagebox
-
+import matplotlib.pyplot as plt
 import customtkinter
 import datetime
-
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 class TextFileHandler:
     """
@@ -107,10 +107,10 @@ class WaterTracker:
         statsText = customtkinter.CTkLabel(statsWindow, text="", font=("Roboto", 18))
         statsText.pack(pady=12, padx=10)
 
-        total = 0
         fileNamePattern = r"\d{4}-\d{2}-\d{2}.txt"
         stats = []
-
+        dates = []
+        totals = []
         for filename in os.listdir():
             if os.path.isfile(filename) and re.match(fileNamePattern, filename):
                 with open(filename, "r") as file:
@@ -122,9 +122,22 @@ class WaterTracker:
                                 file_total += int(number)
                     filename = filename.replace(".txt", "")
                     stats.append(f"{filename}, total ml drank: {file_total} ml")
-                    total += file_total
+                    dates.append(filename)
+                    totals.append(file_total)
 
         statsText.configure(text="\n\n".join(stats))
+
+        plt.plot(dates,totals)
+        plt.xlabel("Date",fontsize=14)
+        plt.ylabel("Total ml",fontsize=14)
+        plt.title("Daily ml drank",fontsize=14)
+        plt.xticks(rotation=90)
+        plt.tight_layout()
+        canvas = FigureCanvasTkAgg(plt.gcf(), master=statsWindow)
+        canvas_widget = canvas.get_tk_widget()
+        canvas_widget.pack()
+
+        plt.show()
 
 
 if __name__ == "__main__":
