@@ -1,3 +1,4 @@
+import glob
 import os
 import re
 from tkinter import messagebox
@@ -107,23 +108,22 @@ class WaterTracker:
         statsText = customtkinter.CTkLabel(statsWindow, text="", font=("Roboto", 18))
         statsText.pack(pady=12, padx=10)
 
-        fileNamePattern = r"\d{4}-\d{2}-\d{2}.txt"
+        file_name_pattern = "*.txt"
         stats = []
         dates = []
         totals = []
-        for filename in os.listdir():
-            if os.path.isfile(filename) and re.match(fileNamePattern, filename):
-                with open(filename, "r") as file:
-                    file_total = 0
-                    for row in file:
-                        numbers = row.strip().split()
-                        for number in numbers:
-                            if number.isdigit():
-                                file_total += int(number)
-                    filename = filename.replace(".txt", "")
-                    stats.append(f"{filename}, total ml drank: {file_total} ml")
-                    dates.append(filename)
-                    totals.append(file_total)
+        for filename in glob.glob(file_name_pattern):
+            with open(filename, "r") as file:
+                file_total = 0
+                for row in file:
+                    numbers = row.strip().split()
+                    for number in numbers:
+                        if number.isdigit():
+                            file_total += int(number)
+                filename = filename.replace(".txt", "")
+                stats.append(f"{filename}, total ml drank: {file_total} ml")
+                dates.append(filename)
+                totals.append(file_total)
 
         statsText.configure(text="\n\n".join(stats))
 
