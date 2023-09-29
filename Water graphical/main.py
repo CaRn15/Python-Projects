@@ -1,7 +1,9 @@
+import os
+import re
 from tkinter import messagebox
+
 import customtkinter
 import datetime
-import tkinter as tk
 
 
 class TextFileHandler:
@@ -39,7 +41,7 @@ class TextFileHandler:
                         total += int(number)
         return total
 
-class WaterTracker():
+class WaterTracker:
     def __init__(self):
         self.text_file_handler = TextFileHandler()
         customtkinter.set_appearance_mode("system")
@@ -56,8 +58,11 @@ class WaterTracker():
         self.entry = customtkinter.CTkEntry(master=self.frame, placeholder_text="Water amount", font=("Roboto", 15))
         self.entry.pack(pady=12, padx=15)
 
-        self.total_label = customtkinter.CTkLabel(master=self.frame, text="Total: 0.0", font=("Roboto", 15))
-        self.total_label.pack(pady=12, padx=15)
+        self.totalLabel = customtkinter.CTkLabel(master=self.frame, text="Total: 0.0", font=("Roboto", 15))
+        self.totalLabel.pack(pady=12, padx=15)
+
+        self.statsButton = customtkinter.CTkButton(master=self.frame, text="Daily stats", command=self.dailyStats)
+        self.statsButton.pack(pady=12, padx=15)
 
         self.addButton = customtkinter.CTkButton(master=self.frame, text="Add", command=self.add)
         self.addButton.pack(pady=12, padx=15)
@@ -85,11 +90,41 @@ class WaterTracker():
 
     def total(self):
         total = self.text_file_handler.total()
-        self.total_label.configure(text=f"Total: {total} ml")
+        self.totalLabel.configure(text=f"Total: {total} ml")
 
     def quit(self):
         self.text_file_handler.close()
         self.frame.quit()
+
+    def dailyStats(self):
+
+        statsWindow = customtkinter.CTkToplevel(self.frame)
+        statsWindow.title("Daily statistics")
+
+        statsLabel = customtkinter.CTkLabel(statsWindow, text="Daily statistics", font=("Roboto", 18))
+        statsLabel.pack(pady=12, padx=10)
+
+        statsText = customtkinter.CTkLabel(statsWindow, text="", font=("Roboto", 18))
+        statsText.pack(pady=12, padx=10)
+
+        total = 0
+        fileNamePattern = r"\d{4}-\d{2}-\d{2}.txt"
+        stats = []
+
+        for filename in os.listdir():
+            if os.path.isfile(filename) and re.match(fileNamePattern, filename):
+                with open(filename, "r") as file:
+                    file_total = 0
+                    for row in file:
+                        numbers = row.strip().split()
+                        for number in numbers:
+                            if number.isdigit():
+                                file_total += int(number)
+                    filename = filename.replace(".txt", "")
+                    stats.append(f"{filename}, total ml drank: {file_total} ml")
+                    total += file_total
+
+        statsText.configure(text="\n\n".join(stats))
 
 
 if __name__ == "__main__":

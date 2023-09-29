@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="731f1edc-8fe4-4353-9c0f-21eb106fd2f7" name="Changes" comment="Watertracker now an android app!&#10;You can find the apk file in the bin folder of the watertracker project!" />
+    <list default="true" id="731f1edc-8fe4-4353-9c0f-21eb106fd2f7" name="Changes" comment="Watertracker now an android app!&#10;You can find the apk file in the bin folder of the watertracker project!">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,15 +100,28 @@
       <workItem from="1695532315742" duration="12000" />
       <workItem from="1695533452335" duration="35000" />
       <workItem from="1695533504711" duration="407000" />
-      <workItem from="1695533922800" duration="19000" />
+      <workItem from="1695533922800" duration="108000" />
+      <workItem from="1695714167192" duration="4000" />
     </task>
+    <task id="LOCAL−00001" summary="Watertracker now an android app!&#10;You can find the apk file in the bin folder of the watertracker project!">
+      <option name="closed" value="true" />
+      <created>1695534002293</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1695534002293</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Watertracker now an android app!&#10;You can find the apk file in the bin folder of the watertracker project!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Watertracker now an android app!&#10;You can find the apk file in the bin folder of the watertracker project!" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Watertracker$main.coverage" NAME="main Coverage Results" MODIFIED="1695485113977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1695533514889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1695533978834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
