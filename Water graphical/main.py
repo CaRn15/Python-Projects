@@ -134,6 +134,7 @@ class WaterTracker:
         plt.title("Daily ml drank", fontsize=14)
         plt.xticks(rotation=90)
         plt.tight_layout()
+        plt.xlim(0, max(dates))
         canvas = FigureCanvasTkAgg(plt.gcf(), master=statsWindow)
         canvas_widget = canvas.get_tk_widget()
         canvas_widget.pack()
