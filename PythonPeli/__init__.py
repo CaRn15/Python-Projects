@@ -7,8 +7,8 @@ class RoboSeppo:
     def __init__(self):
         pygame.init()
         self.naytto = pygame.display.set_mode((1024, 768))
-        self.robo = pygame.image.load("robo.png")
-        self.kolikko = pygame.image.load("kolikko.png")
+        self.robo = pygame.image.load("PythonPeli/robo.png")
+        self.kolikko = pygame.image.load("PythonPeli/kolikko.png")
         self.x = 100
         self.y = 50
         self.nopeus = 0.1
@@ -18,7 +18,7 @@ class RoboSeppo:
         self.kolikko_y = random.randint(0, self.naytto.get_height() - self.kolikko.get_height())
         self.piste = 0
         self.fontti = pygame.font.SysFont("Arial", 24)
-        self.hirvio = pygame.image.load("hirvio.png")
+        self.hirvio = pygame.image.load("PythonPeli/hirvio.png")
         self.hirvio_x = random.randint(0, self.naytto.get_width() - self.hirvio.get_width())
         self.hirvio_y = random.randint(0, self.naytto.get_height() - self.hirvio.get_height())
 
